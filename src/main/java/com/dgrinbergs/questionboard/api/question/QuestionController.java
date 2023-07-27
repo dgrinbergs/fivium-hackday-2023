@@ -1,7 +1,6 @@
 package com.dgrinbergs.questionboard.api.question;
 
 import com.dgrinbergs.questionboard.api.generated.types.Question;
-import com.dgrinbergs.questionboard.api.generated.types.QuestionInput;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
@@ -17,8 +16,8 @@ public class QuestionController {
   }
 
   @MutationMapping
-  public Mono<Question> createQuestion(@Argument QuestionInput input) {
-    return questionService.createQuestion(input.getQuestion(), input.getTtl());
+  public Mono<Question> submitQuestion(@Argument String question, @Argument Integer ttl) {
+    return questionService.submitQuestion(question, ttl);
   }
 
 }

@@ -2,3 +2,7 @@ spring:
   graphql:
     schema:
       locations: /schema/**
+    cors:
+      allowed-origins: "*"
+      allowed-headers: "*"
+      allowed-methods: "*"

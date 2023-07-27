@@ -16,6 +16,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.boot:spring-boot-starter-graphql")
   implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars")
+  implementation("com.github.javafaker:javafaker:1.0.2")
 }
 
 tasks.withType<GenerateJavaTask> {

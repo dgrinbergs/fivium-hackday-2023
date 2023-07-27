@@ -19,7 +19,7 @@ public class QuestionService {
     this.clock = clock;
   }
 
-  public Mono<Question> createQuestion(String question, int ttl) {
+  public Mono<Question> submitQuestion(String question, int ttl) {
     var id = UUID.randomUUID();
     var postedTimestamp = OffsetDateTime.now(clock);
 

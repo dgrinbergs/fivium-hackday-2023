@@ -6,8 +6,3 @@ type Question {
   ttl: Int!
   question: String!
 }
-
-input QuestionInput {
-  ttl: Int!
-  question: String!
-}

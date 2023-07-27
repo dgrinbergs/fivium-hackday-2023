@@ -3,5 +3,5 @@ type Query {
 }
 
 type Mutation {
-  createQuestion(input: QuestionInput!): Question!
+  submitQuestion(question: String!, ttl: Int!): Question!
 }
