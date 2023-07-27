@@ -1,0 +1,7 @@
+type Query {
+  questions: [Question!]!
+}
+
+type Mutation {
+  createQuestion(input: QuestionInput!): Question!
+}

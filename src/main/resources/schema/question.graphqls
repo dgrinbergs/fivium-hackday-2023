@@ -1,0 +1,13 @@
+scalar DateTime
+
+type Question {
+  id: ID!
+  postedTimestamp: DateTime!
+  ttl: Int!
+  question: String!
+}
+
+input QuestionInput {
+  ttl: Int!
+  question: String!
+}
