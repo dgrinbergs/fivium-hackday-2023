@@ -3,7 +3,7 @@ import { useContext } from "react";
 import NewQuestionForm from "./question/NewQuestionForm";
 
 export default function Header() {
-  const { questions } = useContext(QuestionContext);
+  const questions = useContext(QuestionContext);
 
   return (
     <header className="flex flex-col sm:flex-row justify-between items-center pb-4">

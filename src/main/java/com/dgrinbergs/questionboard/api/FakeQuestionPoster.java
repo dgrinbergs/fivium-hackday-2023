@@ -4,14 +4,12 @@ import com.dgrinbergs.questionboard.api.generated.types.Question;
 import com.dgrinbergs.questionboard.api.question.QuestionPostedEvent;
 import com.github.javafaker.Faker;
 import java.time.Clock;
-import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 
 @Component
 public class FakeQuestionPoster {
@@ -23,7 +21,7 @@ public class FakeQuestionPoster {
 
   FakeQuestionPoster(ApplicationEventPublisher eventPublisher) {
     this.eventPublisher = eventPublisher;
-    Flux.interval(Duration.ofSeconds(1)).doOnNext(i -> generateRandomEvent()).subscribe();
+//    Flux.interval(Duration.ofSeconds(5)).doOnNext(i -> generateRandomEvent()).subscribe();
   }
 
   public void generateRandomEvent() {
