@@ -25,3 +25,25 @@ export default function useSubmitQuestion({
 
   return { loading, data, submitQuestion };
 }
+
+// export function useCountdown(seconds: number) {
+//   const [countdown, setCountdown] = useState(seconds);
+
+//   useEffect(() => {
+//     tick();
+//     const interval = setInterval(tick, 1000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const done = () => {};
+
+//   function tick() {
+//     if (seconds === 0) {
+//       done();
+//       return;
+//     }
+//     setCountdown((s) => s - 1);
+//   }
+
+//   return { countdown, done };
+// }
