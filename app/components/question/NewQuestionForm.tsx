@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 
 export default function NewQuestionForm() {
   const [question, setQuestion] = useState("");
-  const [ttl] = useState(4);
+  const [ttl] = useState(30);
 
   const { submitQuestion, loading } = useSubmitQuestion({ question, ttl });
 

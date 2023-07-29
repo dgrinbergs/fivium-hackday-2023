@@ -8,7 +8,7 @@ import { useContext, useEffect } from "react";
 import { useCountdown } from "usehooks-ts";
 
 export default block(function QuestionCard(question: Question) {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
   const remainingSeconds =
     DateTime.fromISO(question.postedTimestamp)

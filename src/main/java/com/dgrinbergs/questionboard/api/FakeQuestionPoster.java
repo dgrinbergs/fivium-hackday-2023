@@ -23,7 +23,7 @@ public class FakeQuestionPoster {
 
   FakeQuestionPoster(ApplicationEventPublisher eventPublisher) {
     this.eventPublisher = eventPublisher;
-    Flux.interval(Duration.ofSeconds(15)).doOnNext(i -> generateRandomEvent()).subscribe();
+    Flux.interval(Duration.ofSeconds(10)).doOnNext(i -> generateRandomEvent()).subscribe();
   }
 
   public void generateRandomEvent() {
@@ -34,7 +34,7 @@ public class FakeQuestionPoster {
         .ttl(ThreadLocalRandom.current().nextInt(60, 120))
         .build();
 
-    eventPublisher.publishEvent(new QuestionPostedEvent(
+    eventPublisher.publishEvent(QuestionPostedEvent.create(
         question.getId(),
         question.getPostedTimestamp(),
         question.getTtl(),

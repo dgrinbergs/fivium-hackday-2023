@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 import { AppProvider } from "./context";
 import "./globals.css";
+import { EventProvider } from "./events";
 
 const inter = Inter({ subsets: ["latin"] });
 

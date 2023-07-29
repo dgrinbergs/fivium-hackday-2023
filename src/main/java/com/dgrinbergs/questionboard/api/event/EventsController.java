@@ -1,6 +1,5 @@
 package com.dgrinbergs.questionboard.api.event;
 
-import java.time.Duration;
 import java.util.UUID;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +22,6 @@ public class EventsController {
   @GetMapping
   public Flux<ServerSentEvent<ApplicationEvent>> eventStream() {
     return events
-        .delayElements(Duration.ofMillis(20))
         .map(event -> ServerSentEvent.<ApplicationEvent>builder()
             .id(UUID.randomUUID().toString())
             .data(event)

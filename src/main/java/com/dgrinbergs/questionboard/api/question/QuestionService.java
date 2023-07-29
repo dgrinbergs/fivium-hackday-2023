@@ -23,7 +23,7 @@ public class QuestionService {
     var id = UUID.randomUUID();
     var postedTimestamp = OffsetDateTime.now(clock);
 
-    eventPublisher.publishEvent(new QuestionPostedEvent(
+    eventPublisher.publishEvent(QuestionPostedEvent.create(
         id, postedTimestamp, ttl, question
     ));
 

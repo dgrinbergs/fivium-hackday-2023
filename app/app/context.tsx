@@ -1,6 +1,7 @@
 import { Question } from "@/lib/graphql/generated/graphql";
-import { QuestionActions, Types, questionReducer } from "@/lib/reducers";
-import React, { Dispatch, createContext, useEffect, useReducer } from "react";
+import { QuestionActions, questionReducer } from "@/lib/reducers";
+import { Dispatch, ReactNode, createContext, useReducer } from "react";
+import { EventProvider } from "./events";
 
 type InitialStateType = {
   questions: Array<Question>;
@@ -25,31 +26,15 @@ function mainReducer({ questions }: InitialStateType, action: QuestionActions) {
 }
 
 interface AppProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function AppProvider({ children }: AppProviderProps) {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 
-  useEffect(() => {
-    const url = process.env.NEXT_PUBLIC_EVENTS_URL;
-    if (!url) {
-      throw new Error("Missing NEXT_PUBLIC_EVENTS_URL environment variable");
-    }
-    const source = new EventSource(url);
-    source.onmessage = onNewQuestion;
-
-    return () => source.close();
-  }, []);
-
-  function onNewQuestion({ isTrusted, data }: MessageEvent) {
-    if (!isTrusted) return;
-    dispatch({ type: Types.Add, payload: { question: JSON.parse(data) } });
-  }
-
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {children}
+      <EventProvider>{children}</EventProvider>
     </AppContext.Provider>
   );
 }

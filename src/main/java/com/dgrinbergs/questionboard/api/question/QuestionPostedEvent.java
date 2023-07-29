@@ -8,11 +8,21 @@ import java.time.temporal.Temporal;
 import java.util.UUID;
 
 public record QuestionPostedEvent(
+    String type,
     UUID id,
     Temporal postedTimestamp,
     Integer ttl,
     String question
 ) implements ApplicationEvent {
+
+  private static final String EVENT_TYPE = "QUESTION_POSTED";
+
+  public static QuestionPostedEvent create(UUID id, Temporal postedTimestamp, int ttl, String question) {
+    return new QuestionPostedEvent(
+        EVENT_TYPE,
+        id, postedTimestamp, ttl, question
+    );
+  }
 
   @Override
   public boolean isNotExpired(Clock clock) {
